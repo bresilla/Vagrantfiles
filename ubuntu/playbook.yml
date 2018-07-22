@@ -1,0 +1,10 @@
+- hosts: all
+  become: true
+  remote_user: vagrant
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+    - name: install things
+      apt: name={{item}} state=present
+      with_items:
+        - nginx
